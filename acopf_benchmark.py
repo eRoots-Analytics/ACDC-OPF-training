@@ -5,6 +5,8 @@ import VeraGridEngine as vge
 
 folder = os.path.join('data', 'pglib_opf')
 data = dict()
+total = 0
+converged_count = 0
 for name in os.listdir(folder):
     path = os.path.join(folder, name)
     if os.path.isfile(path) and name.lower().endswith(".m"):
@@ -13,9 +15,13 @@ for name in os.listdir(folder):
 
         grid = vge.open_file(fname)
 
-        pf_options = vge.PowerFlowOptions()
+        pf_options = vge.PowerFlowOptions(
+            initialize_with_existing_solution=True
+        )
         opf_options = vge.OptimalPowerFlowOptions(
-            solver=vge.SolverType.NONLINEAR_OPF
+            solver=vge.SolverType.NONLINEAR_OPF,
+            power_flow_options=pf_options,
+            ips_init_with_pf=True
         )
 
         t1 = datetime.now()
@@ -41,5 +47,11 @@ for name in os.listdir(folder):
         print("Converged:", opf_res.converged)
         print("-" * 80)
 
+        if opf_res.converged:
+            converged_count += 1
+
+        total += 1
+
 df = pd.DataFrame(data=data).transpose()
 df.to_excel("ACOPF_benchmark.xlsx")
+print(f"Converged {converged_count} of {total}")

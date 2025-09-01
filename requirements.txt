@@ -1,1 +1,4 @@
-VeraGridEngine >= 5.4.2
+numpy >= 2.2
+VeraGrid >= 5.4.4
+VeraGridEngine >= 5.4.4
+tabulate >= 0.9

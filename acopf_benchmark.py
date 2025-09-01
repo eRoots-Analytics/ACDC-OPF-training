@@ -15,13 +15,23 @@ for name in os.listdir(folder):
 
         grid = vge.open_file(fname)
 
-        pf_options = vge.PowerFlowOptions(
-            initialize_with_existing_solution=True
-        )
+        # pf_options = vge.PowerFlowOptions(
+        #     initialize_with_existing_solution=True
+        # )
+        # pf_drv = vge.PowerFlowDriver(grid=grid, options=pf_options)
+        # pf_drv.run()
+
         opf_options = vge.OptimalPowerFlowOptions(
             solver=vge.SolverType.NONLINEAR_OPF,
-            power_flow_options=pf_options,
-            ips_init_with_pf=True
+            # ips_init_with_pf=pf_drv.results.converged,
+            ips_init_with_pf=False,
+            ips_tolerance=1e-5,
+            ips_iterations=60,
+            ips_trust_radius=1.0,
+            ips_control_q_limits=True,
+            # acopf_v0=pf_drv.results.voltage,
+            # acopf_S0=pf_drv.results.Sbus,
+            acopf_mode=vge.AcOpfMode.ACOPFslacks
         )
 
         t1 = datetime.now()

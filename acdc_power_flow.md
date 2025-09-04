@@ -3,6 +3,13 @@
 In this tutorial we are going to discuss the AC-DC power flow implementation
 in VeraGrid
 
+## Why AC-DC?
+
+![](pics/grids_of_the_future.png)
+
+Today we have AC grids with some DC links. In the near future
+the DC pieces of the grid will be increasinglymore relevant.
+
 ## Modelling AC-DC links (the easy way)
 
 The easy way of modelling HVDC links is by using the 2-generator model.
@@ -90,16 +97,37 @@ More or less like the 2-generators model: 2 injections plus a coupling equation.
 By introducing this type of branch, we get the freedom to represent the 
 AC and DC grids in any level of detail.
 
+
+## Solvability rules
+
+The power flow simulation is an optimization problem 
+formed by equality constraints. Because of this: 
+
+- For every AC island we must specify one voltage module $Vm$ and one voltage angle $Va$. 
+Usually, at the so called slack bus.
+
+- For every DC island there must be a $Vm$ set point. 
+This can be thought of as a DC slack.
+
+- An AC branch has 4 unknowns ($Vm_f, Vm_t, \theta_f, \theta_t$) 
+and 4 equations ($P_f, P_t, Q_f, Q_t$).
+
+- A DC branch has 2 unknowns ($Vm_f, Vm_t$) and 2 equations 
+($P_f, P_t$).
+
+- A converter branch has 3 unknowns ($Vm_f, Vm_t, \theta_t$) 
+and only 1 _natural_ equation, the losses equation.
+That is why every converter must control two magnitudes to 
+add the 2 extra equations needed. 
+
+
+Since we must ensure equal number of unknowns and equations globally, 
+there is a control compatibility theory.
+
 ### Controls available
 
-An AC branch has 4 unknowns ($Vm_f, Vm_t, \theta_f, \theta_t$) and 4 equations ($P_f, P_t, Q_f, Q_t$).
-
-A DC branch has 2 unknowns ($Vm_f, Vm_t$) and 2 equations ($P_f, P_t$).
-
-A converter branch has 3 unknowns ($Vm_f, Vm_t, \theta_t$) and only 1 _natural_ equation, the losses equation.
-That is why every converter must control two magnitudes to add the 2 extra equations needed. 
-
-For every converter we choose 2 controls:
+Steaming from the solvability rules, we can introduce the converter controls.
+For every converter we need to choose 2 controls to ensure solvability.
 
 | Control type  | Effect                                             |
 |---------------|----------------------------------------------------|
@@ -109,13 +137,6 @@ For every converter we choose 2 controls:
 | $P_{ac}$      | Active power control at the AC side (to side)      |
 | $Q_{ac}$      | Reactive power control at the AC side (to side)    |
 | $P_{dc}$      | Active power control at the DC side (from side)    |
-
-We must also know that for every DC sub-grid there must be a $Vm$ set point. 
-This can be thought of as a DC slack.
-
-Since we must ensure equal number of unknowns and equations globally, 
-there is a control compatibility theory that states the following rules:
-
 
 
 ## Putting all together

@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import VeraGridEngine as vge
 
-folder = os.path.join('data', 'pglib_opf')
+folder = os.path.join('../data', 'pglib_opf')
 data = dict()
 total = 0
 converged_count = 0

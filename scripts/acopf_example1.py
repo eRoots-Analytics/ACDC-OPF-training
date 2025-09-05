@@ -1,9 +1,3 @@
-# Nonlinear Optimal Power Flow (AC-OPF) tutorial
-
-
-## IEEE 14 OPF case
-
-```python
 import os
 import VeraGridEngine as gce
 
@@ -21,4 +15,3 @@ opf_res: gce.OptimalPowerFlowResults = opf_driver.results
 print("Buses:\n", opf_res.get_bus_df())
 print("Generators:\n", opf_res.get_gen_df())
 print("Branches:\n", opf_res.get_branch_df())
-```

@@ -234,3 +234,19 @@ vg.save_file(grid, "6bus.veragrid")
 | L562 | -0.497924 |   14.7122      |   0.500001 | -14.6914      |  -49.7924 | 0.00207697  | 0.0207697   |
 | L34  | -0.199999 |   -9.75607e-22 |   0.200749 |   9.79262e-22 |  -19.9999 | 0.000749344 | 3.65533e-24 |
 
+
+## 3120 AC bus + 5 DC bus case
+
+This is the 3120 bus case from the pglib / Matpower case library. 
+It has been modified to embed a 5 DC bus network within it.
+
+![case3120_5_he_acdc_grid.png](pics/case3120_5_he_acdc_grid.png)
+
+This is the AC-DC subgrid schematic.
+
+Just load the case from [`data/case3120_5_he.veragrid`](data/case3120_5_he.veragrid) 
+into the GUI by drag&drop. The excersise is to:
+
+- Run a power flow
+- Change the converter constrols and control set points and see the effects.
+- 

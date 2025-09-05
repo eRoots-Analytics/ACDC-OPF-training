@@ -251,3 +251,20 @@ into the GUI by drag&drop. The excersise is to:
 - Change the converter constrols and control set points and see the effects.
 - Interpret the power flow results
 - Benchmark against known solvers AC/DC powerflow solvers
+
+### Power Flow
+
+Click on the power flow icon to run the power flow:  
+![Run Power Flow](pics/gridcal_run_pf.png)
+
+When completed, the power flow results are available either on the schematic:  
+![Power Flow Completed](pics/gridcal_run_pf_complete.png)
+
+Or in the **Results** tab:  
+![Results Logs](pics/gridcal_run_pf_logs.png)
+
+Clicking on **Tables**, and then expanding the cascading menu, gives you access to all the information of the devices in the grid:  
+![Power Flow Tables](pics/gridcal_run_pf_tables.png)
+
+---
+

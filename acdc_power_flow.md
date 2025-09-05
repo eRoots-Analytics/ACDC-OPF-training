@@ -254,16 +254,15 @@ into the GUI by drag&drop. The excersise is to:
 
 ### 1. Power Flow
 
-Click on the power flow icon to run the power flow:  
-![Run Power Flow](pics/gridcal_run_pf.png)
+- Click the **Power Flow** icon to start the calculation:  
+   ![Run Power Flow](pics/gridcal_run_pf.png)
+- Once completed, the results can be inspected in two ways:
+   - **Directly on the schematic**:  
+     ![Power Flow Completed](pics/gridcal_run_pf_complete.png)
+   - **Through the Results tab**, which provides logs and numerical details:  
+     ![Results Logs](pics/gridcal_run_pf_logs.png)
 
-When completed, the power flow results are available either on the schematic:  
-![Power Flow Completed](pics/gridcal_run_pf_complete.png)
-
-Or in the **Results** tab:  
-![Results Logs](pics/gridcal_run_pf_logs.png)
-
-Clicking on **Tables**, and then expanding the cascading menu, gives you access to all the information of the devices in the grid:  
+👉 Tip: For a structured overview, click on **Tables** and expand the cascading menu. This gives access to all device data in the grid:  
 ![Power Flow Tables](pics/gridcal_run_pf_tables.png)
 
 ---

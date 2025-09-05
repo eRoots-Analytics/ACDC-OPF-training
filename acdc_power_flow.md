@@ -249,4 +249,5 @@ into the GUI by drag&drop. The excersise is to:
 
 - Run a power flow
 - Change the converter constrols and control set points and see the effects.
-- 
+- Interpret the power flow results
+- Benchmark against known solvers AC/DC powerflow solvers

@@ -16,7 +16,7 @@ line56 = grid.add_line(vg.Line(name='L56', bus_from=bus5, bus_to=bus6, r=0.001, 
 line256 = grid.add_line(vg.Line(name='L562', bus_from=bus5, bus_to=bus6, r=0.001, x=0.01, rate=12))
 
 # Define Hvdc Line
-line34 = grid.add_hvdc(vg.HvdcLine(name='L34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=120))
+line34 = grid.add_hvdc(vg.HvdcLine(name='HVDC34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=120))
 
 # Define generators
 grid.add_generator(bus=bus1, api_obj=vg.Generator(name='Gen1', P=1.0, vset=1.01))
@@ -37,4 +37,5 @@ opf_res: vg.OptimalPowerFlowResults = opf_driver.results
 print("Buses:\n", opf_res.get_bus_df())
 print("Generators:\n", opf_res.get_gen_df())
 print("Branches:\n", opf_res.get_branch_df())
+print("HvdcLines:\n", opf_res.get_hvdc_df())
 print("error: ", opf_res.error)

@@ -103,8 +103,8 @@ AC and DC grids in any level of detail.
 The power flow simulation is an optimization problem 
 formed by equality constraints. Because of this: 
 
-- For every AC island we must specify one voltage module $Vm$ and one voltage angle $Va$. 
-Usually, at the so called slack bus.
+- For every AC island we must specify one voltage module $Vm$ and one voltage angle $\theta$. 
+Usually, at the so called *slack bus*.
 
 - For every DC island there must be a $Vm$ set point. 
 This can be thought of as a DC slack.
@@ -139,7 +139,7 @@ For every converter we need to choose 2 controls to ensure solvability.
 | $P_{dc}$      | Active power control at the DC side (from side)    |
 
 
-## Putting all together
+## Putting it all together
 
 We wanted a no-compromise AC-DC power flow with good convergence properties.
 

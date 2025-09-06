@@ -1,5 +1,24 @@
 # Nonlinear Optimal Power Flow (AC-OPF) tutorial
 
+The non-linear optimal power flow is a power flow optimization with equality and innequality constraints.
+
+You can think of it as a power flow with dispatching capabilities.
+
+## A bit o theory
+
+$$
+min:  f(x)\\
+s.t. \\
+g(x) = 0\\
+h(x) \geq 0
+$$
+
+- $f(x)$: is the objective function.
+- $g(x)$: collection of equality functions.
+- $h(x)$: collection of inequality functions.
+
+# Important parameters
+
 
 ## 4 bus grid from scratch
 
@@ -23,7 +42,7 @@ line56 = grid.add_line(vg.Line(name='L56', bus_from=bus5, bus_to=bus6, r=0.001, 
 line256 = grid.add_line(vg.Line(name='L562', bus_from=bus5, bus_to=bus6, r=0.001, x=0.01, rate=12))
 
 # Define Hvdc Line
-line34 = grid.add_hvdc(vg.HvdcLine(name='L34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=120))
+line34 = grid.add_hvdc(vg.HvdcLine(name='HVDC34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=120))
 
 # Define generators
 grid.add_generator(bus=bus1, api_obj=vg.Generator(name='Gen1', P=1.0, vset=1.01))
@@ -36,7 +55,69 @@ grid.add_load(bus=bus5, api_obj=vg.Load(name='Load2', P=2.0, Q=0.5))
 # declare the snapshot opf
 opf_options = vg.OptimalPowerFlowOptions(solver=vg.SolverType.NONLINEAR_OPF,
                                          ips_tolerance=1e-6,
-                                         ips_iterations=40)
+                                         ips_iterations=40,
+                                         ips_trust_radius=1.0,
+                                         ips_init_with_pf=False,
+                                         ips_control_q_limits=False,
+                                         acopf_mode=vg.AcOpfMode.ACOPFstd,
+                                         acopf_v0=None,
+                                         acopf_S0=None)
+opf_driver = vg.OptimalPowerFlowDriver(grid=grid, options=opf_options)
+opf_driver.run()
+
+opf_res: vg.OptimalPowerFlowResults = opf_driver.results
+print("Buses:\n", opf_res.get_bus_df())
+print("Generators:\n", opf_res.get_gen_df())
+print("Branches:\n", opf_res.get_branch_df())
+print("HvdcLines:\n", opf_res.get_hvdc_df())
+print("error: ", opf_res.error)
+```
+
+
+## IEEE 14 OPF case
+
+```python
+import os
+import VeraGridEngine as vg
+
+fname = os.path.join('..', 'data', 'pglib_opf', 'pglib_opf_case14_ieee.m')
+grid = vg.open_file(fname)
+
+# declare the snapshot opf
+opf_options = vg.OptimalPowerFlowOptions(solver=vg.SolverType.NONLINEAR_OPF,
+                                         ips_tolerance=1e-6,
+                                         ips_iterations=40,
+                                         ips_trust_radius=1.0,
+                                         ips_init_with_pf=False,
+                                         ips_control_q_limits=False,
+                                         acopf_mode=vg.AcOpfMode.ACOPFstd,
+                                         acopf_v0=None,
+                                         acopf_S0=None)
+opf_driver = vg.OptimalPowerFlowDriver(grid=grid, options=opf_options)
+opf_driver.run()
+
+opf_res: vg.OptimalPowerFlowResults = opf_driver.results
+print("Buses:\n", opf_res.get_bus_df())
+print("Generators:\n", opf_res.get_gen_df())
+print("Branches:\n", opf_res.get_branch_df())
+print("error: ", opf_res.error)
+
+# -----------------------------------------------------------------------------
+# Re run initializing with a power flow:
+# -----------------------------------------------------------------------------
+
+pf_res = vg.power_flow(grid)
+
+# declare the snapshot opf
+opf_options = vg.OptimalPowerFlowOptions(solver=vg.SolverType.NONLINEAR_OPF,
+                                         ips_tolerance=1e-6,
+                                         ips_iterations=40,
+                                         ips_trust_radius=1.0,
+                                         ips_init_with_pf=False,
+                                         ips_control_q_limits=True,
+                                         acopf_mode=vg.AcOpfMode.ACOPFstd,
+                                         acopf_v0=pf_res.voltage,
+                                         acopf_S0=pf_res.Sbus)
 opf_driver = vg.OptimalPowerFlowDriver(grid=grid, options=opf_options)
 opf_driver.run()
 
@@ -47,25 +128,3 @@ print("Branches:\n", opf_res.get_branch_df())
 print("error: ", opf_res.error)
 ```
 
-
-## IEEE 14 OPF case
-
-```python
-import os
-import VeraGridEngine as gce
-
-fname = os.path.join('..', 'data', 'pglib_opf', 'pglib_opf_case14_ieee.m')
-main_circuit = gce.open_file(fname)
-
-# declare the snapshot opf
-opf_options = gce.OptimalPowerFlowOptions(solver=gce.SolverType.NONLINEAR_OPF,
-                                          ips_tolerance=1e-6,
-                                          ips_iterations=40)
-opf_driver = gce.OptimalPowerFlowDriver(grid=main_circuit, options=opf_options)
-opf_driver.run()
-
-opf_res: gce.OptimalPowerFlowResults = opf_driver.results
-print("Buses:\n", opf_res.get_bus_df())
-print("Generators:\n", opf_res.get_gen_df())
-print("Branches:\n", opf_res.get_branch_df())
-```

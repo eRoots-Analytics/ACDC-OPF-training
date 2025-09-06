@@ -34,29 +34,29 @@ $$
 Analogously, we can get the passive branch flows like
 
 $$
-	{S_f}_{k} = {{V_m}_f^2} \cdot {{y}_{ff}^*} + {V_m}_f^{\angle{\theta_f}} \cdot {V_m}_t^{\angle{-\theta_t}}  \cdot  {Y}_{ft}^*
+	S_f = {Vm_f^2} \cdot {y_{ff}^*} + Vm_f^{\angle{\theta_f}} \cdot Vm_t^{\angle{-\theta_t}}  \cdot  y_{ft}^*
 $$
 
 $$
-	{S_t}_{k} = {{V_m}_t^2} \cdot {{Y}_{tt}^*} + {V_m}_f^{\angle{-\theta_f}} \cdot {V_m}_t^{\angle{\theta_t}}  \cdot  {Y}_{tf}^*
+	S_t = {Vm_t^2} \cdot {y_{tt}^*} + Vm_f^{\angle{-\theta_f}} \cdot Vm_t^{\angle{\theta_t}}  \cdot  y_{tf}^*
 $$
 
 Where, the admittance primitives are:
 
 $$
-	y_{ff} = \frac{ys + ysh}{m^2 \cdot m_f^2  \cdot e ^{j \cdot 2\tau} } \label{eq:yff}
+	y_{ff} = \frac{ys + ysh}{m^2 \cdot m_f^2  \cdot e ^{j \cdot 2\tau} }
 $$
 
 $$
-	y_{ft} = \frac{-ys}{m  \cdot m_f \cdot m_t}  \label{eq:yft}
+	y_{ft} = \frac{-ys}{m  \cdot m_f \cdot m_t} 
 $$
 
 $$
-	y_{tf} = \frac{-ys}{m \cdot m_f \cdot m_t  \cdot e ^{j \cdot 2\tau} }  \label{eq:ytf}
+	y_{tf} = \frac{-ys}{m \cdot m_f \cdot m_t  \cdot e ^{j \cdot 2\tau} } 
 $$
 
 $$
-	y_{tt} = \frac{ys + ysh}{m_t^2}  \label{eq:ytt}
+	y_{tt} = \frac{ys + ysh}{m_t^2} 
 $$
 
 

@@ -1,31 +1,31 @@
-## ACDC-OPF-training
-Hands-on Training on AC Optimal Power Flows and AC/DC Power Flows Through VeraGrid
+Here’s a clean continuation you can paste into your README, split into the two paths you want.
 
+---
 
+## How to Run VeraGrid
 
-# Introduction
-This repository contains several scripts and markdown tutorials that can be used in conjunction with the VeraGrid GUI
+### Option A — Run VeraGrid on *your machine*
 
-- [ACDC Power Flow](acdc_power_flow.md)
-- [AC Optimal Power Flow](acopf_tutorial.md)
+> (Same instructions as above, copied here for convenience.)
 
-# Requirements
-- [Download Python](https://www.python.org/downloads/) 3.10-3.13 (3.12 recomended)
-- Alternativelly, get a python distribution + all packages installed from [eroots.tech/software](https://www.eroots.tech/veragrid-download)
+**Requirements**
 
-# Sofwtare installation
+* [Download Python](https://www.python.org/downloads/) 3.10-3.13 (3.12 recomended)
+* Alternativelly, get a python distribution + all packages installed from [eroots.tech/software](https://www.eroots.tech/veragrid-download)
+
+**Software installation**
 
 ```shell
 pip3 install veragrid
 ```
 
-# Execution with user interface
+**Execution with user interface**
 
 From the terminal run `veragrid` to launch the graphical user interface.
 
 For scripting, run as you normally would.
 
-To launch the user interface from a script: 
+To launch the user interface from a script:
 
 ```python
 from VeraGrid.ExecuteVeraGrid import runVeraGrid
@@ -39,4 +39,34 @@ or in a single line
 python3`` -c "from VeraGrid.ExecuteVeraGrid import runVeraGrid;runVeraGrid()"
 ```
 
+---
 
+### Option B — Run VeraGrid in your *browser* (no installs)
+
+On the workshop day we’ll provide:
+
+* a link like `http://35.233.62.237:6081/vnc.html`
+* a per-seat password
+
+**Steps**
+
+1. Open the link we provide (e.g., `https://<WORKSHOP URL>/seatX/`) in Chrome/Firefox.
+![noVNC](pics/noVNC.png)
+2. Enter the password we provide on the day.
+![noVNC_creds](pics/noVNC_creds.png)
+3. You’ll see a Linux desktop in your browser. Open a terminal
+![noVNC_linux](pics/noVNC_linux.png)
+   * Menu → **Applications → Terminal Emulator** (or right-click desktop → **Open Terminal**).
+   
+4. Launch the GUI:
+![noVNC_linux](pics/noVNC_terminal.png)
+   ```bash
+   veragrid
+   ```
+5. That’s it—VeraGrid will start inside the browser desktop. You can also run your Python scripts as usual from this terminal.
+
+**Notes**
+
+* We’ll share your exact seat link and password at the start of the session.
+* If the browser page looks idle/blank, refresh the page and re-enter the password.
+* All you need is a modern browser; no local Python install required.

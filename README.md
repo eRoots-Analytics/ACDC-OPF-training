@@ -45,8 +45,8 @@ python3`` -c "from VeraGrid.ExecuteVeraGrid import runVeraGrid;runVeraGrid()"
 
 On the workshop day we’ll provide:
 
-* a link like `http://35.233.62.237:6081/vnc.html`
-* a per-seat password
+* a link like `https://35.233.62.237.sslip.io/seat1/`
+* a per-seat password `seat1pass`
 
 **Steps**
 

@@ -49,21 +49,22 @@ On the workshop day we’ll provide:
 * a per-seat password `seat1pass`
 
 **Steps**
-
-1. Open the link we provide (e.g., `https://<WORKSHOP URL>/seatX/`) in Chrome/Firefox.
+1. Open the link we provide (e.g., `https://<WORKSHOP URL>/seatX/`) in Chrome/Firefox and click `noVNC Full Client`
+![noVNC](pics/noVNC_landing.png)
+2. Open the link we provide (e.g., `https://<WORKSHOP URL>/seatX/`) in Chrome/Firefox.
 ![noVNC](pics/noVNC.png)
-2. Enter the password we provide on the day.
+3. Enter the password we provide on the day.
 ![noVNC_creds](pics/noVNC_creds.png)
-3. You’ll see a Linux desktop in your browser. Open a terminal
+4. You’ll see a Linux desktop in your browser. Open a terminal
 ![noVNC_linux](pics/noVNC_linux.png)
    * Menu → **Applications → Terminal Emulator** (or right-click desktop → **Open Terminal**).
    
-4. Launch the GUI:
+5. Launch the GUI:
 ![noVNC_linux](pics/noVNC_terminal.png)
    ```bash
    veragrid
    ```
-5. That’s it—VeraGrid will start inside the browser desktop. You can also run your Python scripts as usual from this terminal.
+6. That’s it—VeraGrid will start inside the browser desktop. You can also run your Python scripts as usual from this terminal.
 
 **Notes**
 

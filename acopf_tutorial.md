@@ -34,11 +34,11 @@ $$
 Analogously, we can get the passive branch flows like
 
 $$
-	S_f = {Vm_f^2} \cdot {y_{ff}^*} + Vm_f^{\angle{\theta_f}} \cdot Vm_t^{\angle{-\theta_t}}  \cdot  y_{ft}^*
+	S_f = {Vm_f^2} \cdot {y_{ff}^{*}} + Vm_f^{\angle{\theta_f}} \cdot Vm_t^{\angle{-\theta_t}}  \cdot  y_{ft}^{*}
 $$
 
 $$
-	S_t = {Vm_t^2} \cdot {y_{tt}^*} + Vm_f^{\angle{-\theta_f}} \cdot Vm_t^{\angle{\theta_t}}  \cdot  y_{tf}^*
+	S_t = {Vm_t^2} \cdot {y_{tt}^{*}} + Vm_f^{\angle{-\theta_f}} \cdot Vm_t^{\angle{\theta_t}}  \cdot  y_{tf}^{*}
 $$
 
 Where, the admittance primitives are:

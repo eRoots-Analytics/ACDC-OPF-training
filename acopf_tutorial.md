@@ -60,7 +60,16 @@ $$
 $$
 
 
-The transformer taps^
+Here:
+
+- $ys = r + j \cdot x$
+- $tap: m^{\angle{-\tau}}$
+- $m$: tap module.
+- $\tau$: tap angle.
+
+Coupling back to the problem definition, $f(x)$ is the evaluation of the costs of $S$,
+$g(x)$ is the power flow equation, and $h(x)$ is the check that the flows are within boundaries, 
+genration is with boundaries etc. 
 
 # Important parameters
 

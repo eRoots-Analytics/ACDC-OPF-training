@@ -247,6 +247,23 @@ This is the AC-DC subgrid schematic.
 Just load the case from [`data/case3120_5_he.veragrid`](data/case3120_5_he.veragrid) 
 into the GUI by drag&drop. The excersise is to:
 
-- Run a power flow
-- Change the converter constrols and control set points and see the effects.
-- 
+1. Run a power flow
+2. Change the converter constrols and control set points and see the effects.
+3. Interpret the power flow results
+4. Benchmark against known solvers AC/DC powerflow solvers
+
+### 1. Power Flow
+
+- Click the **Power Flow** icon to start the calculation:  
+   ![Run Power Flow](pics/gridcal_run_pf.png)
+- Once completed, the results can be inspected in two ways:
+   - **Directly on the schematic**:  
+     ![Power Flow Completed](pics/gridcal_run_pf_complete.png)
+   - **Through the Results tab**, which provides logs and numerical details:  
+     ![Results Logs](pics/gridcal_run_pf_logs.png)
+
+👉 Tip: For a structured overview, click on **Tables** and expand the cascading menu. This gives access to all device data in the grid:  
+![Power Flow Tables](pics/gridcal_run_pf_tables.png)
+
+---
+

@@ -7,9 +7,13 @@ You can think of it as a power flow with dispatching capabilities.
 ## A bit o theory
 
 $$
-min:  f(x)\\
-s.t. \\
-g(x) = 0\\
+min:  f(x)
+$$
+s.t. 
+$$
+g(x) = 0
+$$
+$$
 h(x) \geq 0
 $$
 

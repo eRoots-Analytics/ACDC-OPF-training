@@ -21,6 +21,47 @@ $$
 - $g(x)$: collection of equality functions.
 - $h(x)$: collection of inequality functions.
 
+The main electrotechnical equation to solve is the power flow equation:
+
+$$
+S = V \cdot (Y \times V)*
+$$
+
+- $S$: Vector of power flow injections
+- $V$: Vector of nodal voltages
+- $Y$: Matrix of branch and shunt admittances
+
+Analogously, we can get the passive branch flows like
+
+$$
+	{S_f}_{k} = {{V_m}_f^2} \cdot {{y}_{ff}^*} + {V_m}_f^{\angle{\theta_f}} \cdot {V_m}_t^{\angle{-\theta_t}}  \cdot  {Y}_{ft}^*
+$$
+
+$$
+	{S_t}_{k} = {{V_m}_t^2} \cdot {{Y}_{tt}^*} + {V_m}_f^{\angle{-\theta_f}} \cdot {V_m}_t^{\angle{\theta_t}}  \cdot  {Y}_{tf}^*
+$$
+
+Where, the admittance primitives are:
+
+$$
+	y_{ff} = \frac{ys + ysh}{m^2 \cdot m_f^2  \cdot e ^{j \cdot 2\tau} } \label{eq:yff}
+$$
+
+$$
+	y_{ft} = \frac{-ys}{m  \cdot m_f \cdot m_t}  \label{eq:yft}
+$$
+
+$$
+	y_{tf} = \frac{-ys}{m \cdot m_f \cdot m_t  \cdot e ^{j \cdot 2\tau} }  \label{eq:ytf}
+$$
+
+$$
+	y_{tt} = \frac{ys + ysh}{m_t^2}  \label{eq:ytt}
+$$
+
+
+The transformer taps^
+
 # Important parameters
 
 

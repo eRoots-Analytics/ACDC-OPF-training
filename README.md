@@ -1,14 +1,15 @@
 # ACDC power flow & ACOPF tutorial
 
-Here’s a clean continuation you can paste into your README, split into the two paths you want.
+In this tutorial we will learn how to use VeraGrid for AC power flow and AC optimal power flow (ACOPF) studies:
+
+- [AC/DC Power Flow](./acdc_power_flow.md)
+- [AC Optimal Power Flow (ACOPF)](./acopf_tutorial.md)
 
 ---
 
 ## How to Run VeraGrid
 
 ### Option A — Run VeraGrid on *your machine*
-
-> (Same instructions as above, copied here for convenience.)
 
 **Requirements**
 

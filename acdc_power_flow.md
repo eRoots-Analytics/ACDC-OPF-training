@@ -248,9 +248,8 @@ Just load the case from [`data/case3120_5_he.veragrid`](data/case3120_5_he.verag
 into the GUI by drag&drop. The excersise is to:
 
 1. Run a power flow
-2. Change the converter constrols and control set points and see the effects.
-3. Interpret the power flow results
-4. Benchmark against known solvers AC/DC powerflow solvers
+2. Interpret the power flow results
+3. Change the converter controls and control set points and see the effects
 
 ### 1. Power Flow
 
@@ -267,3 +266,26 @@ into the GUI by drag&drop. The excersise is to:
 
 ---
 
+### 2. Interpreting Results
+
+- Bus Voltages: Check voltage levels and angle across the grid.
+![Run Power Flow](pics/pf_bus_voltages.png)
+![Run Power Flow](pics/pf_bus_angles.png)
+- AC-DC Branch Flows: Analyze power flows through AC and DC branches
+![Run Power Flow](pics/pf_vsc_power_from.png)
+![Run Power Flow](pics/pf_vsc_power_to.png)
+![Run Power Flow](pics/pf_vsc_power_losses.png)
+- Once again, we may return to the schematic view for a more intuitive understanding of the results to observe the bus magnitudes and branch flows.
+
+
+Notice how all except one of the converters are operating at fixed power. The last one is controlling the DC voltage, as is required for solvability. Let's try changing some controls:
+
+### 3. Changing Converter Controls
+- In the schematic, click on a converter to open its properties. Here, we focus on VSC interfacing between the DC Bus 2 and AC Bus 70
+![Run Power Flow](pics/pf_vsc_schematic.png)
+![Run Power Flow](pics/pf_vsc_schematic_zoomed.png)
+- We can begin with a simple change of direction of the active power flow. Change the `control1` dropdown menu from `Pdc` to `Pac`. Leave the rest as is and click on the Power Flow icon again to re-run the simulation.
+![Run Power Flow](pics/pf_vsc_Pac.png)
+![Run Power Flow](pics/pf_vsc_Pac_result.png)
+- Notice how the power flow direction has changed, and the DC voltage has adjusted accordingly. If we prefer, we can explicitly set the DC voltage instead of letting it float. Change `control1` to `Vm_dc` and set `control1_val` to `1.01`. Run the power flow again.
+![Run Power Flow](pics/pf_vsc_Vdc_result.png)

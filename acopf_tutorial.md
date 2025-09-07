@@ -71,7 +71,24 @@ Coupling back to the problem definition, $f(x)$ is the evaluation of the costs o
 $g(x)$ is the power flow equation, and $h(x)$ is the check that the flows are within boundaries, 
 genration is with boundaries etc. 
 
-# Important parameters
+## Features & Important parameters
+
+- Generation cost optimization & voltage control
+  - `Cost0`: Fixed cost
+  - `Cost`: Linear cost
+  - `Cost2`: Quadratic cost
+  - `Qmin` & `Qmax`: Reactive power limits for the generator
+  - `Pmin` & `Pmax`: Active power limits for the generator
+- Passive branch losses optimization
+  - `rate`: Branch rating
+- Transformer power and voltage control
+  - `tap_module_min` & `tap_module_max`:
+  - `tap_angle_min` & `tap_angle_max`:
+- Hvdc Line setpoint optimization
+  - `rate`: HvdcLine rating that determined the power that can de dispatched
+- Shunt voltage control
+  - `Bmin` & `Bmax`: Susceptance limits for the generator
+
 
 
 ## 4 bus grid from scratch
@@ -96,11 +113,11 @@ line56 = grid.add_line(vg.Line(name='L56', bus_from=bus5, bus_to=bus6, r=0.001, 
 line256 = grid.add_line(vg.Line(name='L562', bus_from=bus5, bus_to=bus6, r=0.001, x=0.01, rate=12))
 
 # Define Hvdc Line
-line34 = grid.add_hvdc(vg.HvdcLine(name='HVDC34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=120))
+line34 = grid.add_hvdc(vg.HvdcLine(name='HVDC34', bus_from=bus2, bus_to=bus5, Pset=0.2, rate=10))
 
 # Define generators
-grid.add_generator(bus=bus1, api_obj=vg.Generator(name='Gen1', P=1.0, vset=1.01))
-grid.add_generator(bus=bus6, api_obj=vg.Generator(name='Gen2', P=1.0, vset=1.02))
+grid.add_generator(bus=bus1, api_obj=vg.Generator(name='Gen1', P=1.0, vset=1.01, Pmin=0, Pmax=10, Qmin=-6, Qmax=7))
+grid.add_generator(bus=bus6, api_obj=vg.Generator(name='Gen2', P=1.0, vset=1.02, Pmin=0, Pmax=10, Qmin=-6, Qmax=7))
 
 # Define loads
 grid.add_load(bus=bus2, api_obj=vg.Load(name='Load1', P=3.0, Q=0.3))
@@ -182,3 +199,17 @@ print("Branches:\n", opf_res.get_branch_df())
 print("error: ", opf_res.error)
 ```
 
+## Texas 2000 bus case
+
+Load the grid [`ACTIVS2000.veragrid`](data/ACTIVS2000.veragrid)
+
+Set the OPF settings:
+![opf_settings.png](pics%2Fopf_settings.png)
+
+Run the opf (blue x symbol at the button ribbon)
+
+![activs_2000_acopf.png](pics%2Factivs_2000_acopf.png)
+
+You can see the results at the results tab:
+
+![activs_2000_results.png](pics%2Factivs_2000_results.png)

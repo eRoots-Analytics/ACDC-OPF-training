@@ -1,3 +1,5 @@
+# ACDC power flow & ACOPF tutorial
+
 Here’s a clean continuation you can paste into your README, split into the two paths you want.
 
 ---

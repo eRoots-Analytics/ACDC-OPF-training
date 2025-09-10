@@ -14,7 +14,7 @@ $$
 g(x) = 0
 $$
 $$
-h(x) \geq 0
+h(x) \leq 0
 $$
 
 - $f(x)$: is the objective function.

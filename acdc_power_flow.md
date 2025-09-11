@@ -209,8 +209,6 @@ print('Branch values')
 print(pf_driver.results.get_branch_df())
 
 print("error:", pf_driver.results.error)
-
-vg.save_file(grid, "6bus.veragrid")
 ```
 
 

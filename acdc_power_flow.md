@@ -204,11 +204,9 @@ pf_driver.run()
 
 print('Bus values')
 print(pf_driver.results.get_bus_df())
-print(pf_driver.results.get_bus_df().to_markdown(tablefmt="grid"))
 
 print('Branch values')
 print(pf_driver.results.get_branch_df())
-print(pf_driver.results.get_branch_df().to_markdown(tablefmt="grid"))
 
 print("error:", pf_driver.results.error)
 

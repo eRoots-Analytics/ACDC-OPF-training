@@ -1,3 +1,5 @@
+![VeraGrid_banner.png](pics/VeraGrid_banner.png)
+
 # ACDC power flow & ACOPF tutorial
 
 In this tutorial we will learn how to use VeraGrid for AC power flow and AC optimal power flow (ACOPF) studies:

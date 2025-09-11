@@ -1,3 +1,6 @@
+
+![VeraGrid_banner.png](pics/VeraGrid_banner.png)
+
 # AC DC power flow tutorial
 
 In this tutorial we are going to discuss the AC-DC power flow implementation

@@ -1,3 +1,6 @@
+
+![VeraGrid_banner.png](pics/VeraGrid_banner.png)
+
 # Nonlinear Optimal Power Flow (AC-OPF) tutorial
 
 The non-linear optimal power flow is a power flow optimization with equality and innequality constraints.
